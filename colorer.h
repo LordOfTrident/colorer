@@ -1,4 +1,9 @@
-/* #define COLORER_IMPLEMENTATION */
+/*
+ * https://github.com/LordOfTrident/colorer
+ *
+ * #define COLORER_IMPLEMENTATION
+ *
+ */
 
 #ifndef COLORER_H_HEADER_GUARD
 #define COLORER_H_HEADER_GUARD
