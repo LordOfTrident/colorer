@@ -8,8 +8,12 @@
 #ifndef COLORER_H_HEADER_GUARD
 #define COLORER_H_HEADER_GUARD
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #define COLORER_VERSION_MAJOR 1
-#define COLORER_VERSION_MINOR 0
+#define COLORER_VERSION_MINOR 1
 #define COLORER_VERSION_PATCH 0
 
 #ifndef WIN32
@@ -50,9 +54,17 @@ void color_reset(FILE *file);
 void color_fg(FILE *file, int color);
 void color_bg(FILE *file, int color);
 
+#ifdef __cplusplus
+}
+#endif
+
 #endif
 
 #ifdef COLORER_IMPLEMENTATION
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 #ifdef WIN32
 static WORD _fg_colors[] = {
@@ -211,5 +223,9 @@ void color_bg(FILE *file, int color) {
 	fputs(_bg_colors[color], file);
 #endif
 }
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif
