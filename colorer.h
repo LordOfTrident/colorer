@@ -13,7 +13,7 @@ extern "C" {
 #endif
 
 #define COLORER_VERSION_MAJOR 1
-#define COLORER_VERSION_MINOR 1
+#define COLORER_VERSION_MINOR 2
 #define COLORER_VERSION_PATCH 0
 
 #ifndef WIN32
@@ -50,6 +50,7 @@ enum {
 
 void color_init(void);
 void color_reset(FILE *file);
+void color_bold( FILE *file); /* Does not do anything on Windows */
 
 void color_fg(FILE *file, int color);
 void color_bg(FILE *file, int color);
@@ -181,6 +182,14 @@ void color_reset(FILE *file) {
 		return;
 
 	fputs("\x1b[0m", file);
+#endif
+}
+
+void color_bold(FILE *file) {
+#ifdef WIN32
+	(void)file;
+#else
+	fputs("\x1b[1m", file);
 #endif
 }
 
