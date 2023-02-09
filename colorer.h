@@ -189,6 +189,9 @@ void color_bold(FILE *file) {
 #ifdef WIN32
 	(void)file;
 #else
+	if (file != stderr && file != stdout)
+		return;
+
 	fputs("\x1b[1m", file);
 #endif
 }
